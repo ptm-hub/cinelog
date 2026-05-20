@@ -188,7 +188,7 @@ cinelog/
 
 **Pablo Tapia Manchado**
 
-- GitHub: [@pablo-tapia-manchado](https://github.com/pablo-tapia-manchado)
+- GitHub: [@ptm-hub](https://github.com/ptm-hub)
 
 ---
 
