@@ -1,6 +1,5 @@
 // Configuracion e inicializacion de Firebase
 // Todos los accesos a Firebase pasan por este fichero
-// Autor: Pablo Tapia Manchado
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 

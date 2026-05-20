@@ -1,6 +1,5 @@
 // Servicio centralizado para todas las operaciones con Firebase Firestore
 // Todas las paginas y componentes deben usar estas funciones para acceder a los datos
-// Autor: Pablo Tapia Manchado
 import {
   collection,
   getDocs,

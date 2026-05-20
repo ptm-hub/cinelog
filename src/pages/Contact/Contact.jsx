@@ -1,5 +1,4 @@
 // Pagina de contacto con formulario y mapa de Leaflet
-// Autor: Pablo Tapia Manchado
 import { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet'

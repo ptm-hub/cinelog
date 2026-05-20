@@ -1,6 +1,5 @@
 // Pagina para importar y exportar datos del catalogo en JSON, CSV y XML
 // Los datos se leen y escriben en Firebase Firestore a traves del servicio centralizado
-// Autor: Pablo Tapia Manchado
 import { useState } from 'react'
 import { FaDownload, FaUpload, FaFileAlt, FaFileCsv, FaFileCode } from 'react-icons/fa'
 import Papa from 'papaparse'

@@ -1,7 +1,6 @@
 // Pagina de inicio de CineLog
 // Muestra un banner principal y una seleccion de peliculas destacadas
 // Usa un estado para filtrar por categoria
-// Autor: Pablo Tapia Manchado
 import { useState } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'

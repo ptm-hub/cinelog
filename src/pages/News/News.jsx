@@ -1,6 +1,5 @@
 // Pagina de noticias que lee un feed RSS de entretenimiento de la BBC
 // Usa useEffect para hacer la peticion al API cuando carga la pagina
-// Autor: Pablo Tapia Manchado
 import { useState, useEffect } from 'react'
 import { FaRss, FaExternalLinkAlt, FaClock } from 'react-icons/fa'
 import Header from '../../components/Header/Header'

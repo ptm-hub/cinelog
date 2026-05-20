@@ -1,6 +1,5 @@
 // Pagina del catalogo con CRUD completo usando Firebase Firestore
 // Accede a los datos a traves del servicio centralizado en services/movies-service.js
-// Autor: Pablo Tapia Manchado
 import { useState, useEffect } from 'react'
 import { FaPlus, FaEdit, FaTrash, FaStar, FaTimes } from 'react-icons/fa'
 import Header from '../../components/Header/Header'
