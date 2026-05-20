@@ -1,0 +1,54 @@
+/* Variables de color para el tema oscuro de CineLog */
+:root {
+  --color-bg: #0f0f1a;
+  --color-card: #1a1a2e;
+  --color-header: #12121e;
+  --color-accent: #e94560;
+  --color-accent-hover: #c73250;
+  --color-gold: #f5a623;
+  --color-text: #ffffff;
+  --color-text-soft: #cccccc;
+  --color-text-muted: #888888;
+  --color-border: #2d2d4e;
+  --color-input: #22223a;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-main);
+}
+
+img {
+  max-width: 100%;
+}

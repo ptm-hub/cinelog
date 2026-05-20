@@ -1,0 +1,325 @@
+// Pagina del catalogo de peliculas con operaciones CRUD completas
+// Lee, busca, inserta, actualiza y elimina del array de peliculas
+// Autor: Pablo Tapia Manchado
+import { useState } from 'react'
+import { FaPlus, FaEdit, FaTrash, FaStar, FaTimes } from 'react-icons/fa'
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
+import { initialMoviesData } from '../../data/movies-data'
+import './Catalog.css'
+
+// Datos iniciales del formulario vacios
+const emptyForm = {
+  titulo: '',
+  director: '',
+  anyo: '',
+  genero: '',
+  puntuacion: '',
+  descripcion: '',
+  imagen: ''
+}
+
+function Catalog() {
+  // Estado principal con la lista de peliculas
+  const [movies, setMovies] = useState(initialMoviesData)
+
+  // Estados para los filtros de busqueda
+  const [searchText, setSearchText] = useState('')
+  const [selectedGenre, setSelectedGenre] = useState('Todos')
+
+  // Estados para el modal de creacion/edicion
+  const [isFormOpen, setIsFormOpen] = useState(false)
+  const [editingMovie, setEditingMovie] = useState(null)
+  const [formData, setFormData] = useState(emptyForm)
+
+  // Calcula los generos unicos para el selector de filtro
+  const genres = ['Todos', ...new Set(movies.map(m => m.genero))]
+
+  // Filtra las peliculas segun el texto de busqueda y el genero seleccionado
+  const filteredMovies = movies.filter(movie => {
+    const matchesSearch =
+      movie.titulo.toLowerCase().includes(searchText.toLowerCase()) ||
+      movie.director.toLowerCase().includes(searchText.toLowerCase())
+    const matchesGenre = selectedGenre === 'Todos' || movie.genero === selectedGenre
+    return matchesSearch && matchesGenre
+  })
+
+  // Elimina una pelicula del array por su id
+  function handleDelete(movieId) {
+    if (window.confirm('¿Estas seguro de que quieres eliminar esta pelicula?')) {
+      setMovies(movies.filter(m => m.id !== movieId))
+    }
+  }
+
+  // Abre el modal con los datos de la pelicula que se quiere editar
+  function handleEdit(movie) {
+    setEditingMovie(movie)
+    setFormData({
+      titulo: movie.titulo,
+      director: movie.director,
+      anyo: String(movie.anyo),
+      genero: movie.genero,
+      puntuacion: String(movie.puntuacion),
+      descripcion: movie.descripcion,
+      imagen: movie.imagen
+    })
+    setIsFormOpen(true)
+  }
+
+  // Abre el modal vacio para crear una nueva pelicula
+  function handleNew() {
+    setEditingMovie(null)
+    setFormData(emptyForm)
+    setIsFormOpen(true)
+  }
+
+  // Cierra el modal y limpia el estado de edicion
+  function handleCloseForm() {
+    setIsFormOpen(false)
+    setEditingMovie(null)
+  }
+
+  // Actualiza el estado del formulario cuando el usuario escribe
+  function handleFormChange(event) {
+    const { name, value } = event.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  // Guarda los cambios: actualiza si se esta editando, inserta si es nuevo
+  function handleSave(event) {
+    event.preventDefault()
+    const movieToSave = {
+      ...formData,
+      anyo: Number(formData.anyo),
+      puntuacion: Number(formData.puntuacion)
+    }
+
+    if (editingMovie) {
+      // Actualizacion: reemplaza la pelicula con el mismo id
+      setMovies(movies.map(m =>
+        m.id === editingMovie.id ? { ...movieToSave, id: editingMovie.id } : m
+      ))
+    } else {
+      // Insercion: crea una pelicula nueva con id unico basado en la fecha
+      setMovies([...movies, { ...movieToSave, id: Date.now() }])
+    }
+
+    handleCloseForm()
+  }
+
+  return (
+    <>
+      <Header />
+
+      <main className="catalog">
+        <div className="catalog__container">
+
+          <div className="catalog__header">
+            <div>
+              <h1 className="catalog__title">Catalogo de Peliculas</h1>
+              <p className="catalog__subtitle">
+                {filteredMovies.length} de {movies.length} peliculas
+              </p>
+            </div>
+            <button className="catalog__btn-add" onClick={handleNew}>
+              <FaPlus /> Anadir Pelicula
+            </button>
+          </div>
+
+          {/* Barra de busqueda y filtro por genero */}
+          <div className="catalog__filters">
+            <input
+              type="text"
+              placeholder="Buscar por titulo o director..."
+              value={searchText}
+              onChange={e => setSearchText(e.target.value)}
+              className="catalog__search"
+            />
+            <select
+              value={selectedGenre}
+              onChange={e => setSelectedGenre(e.target.value)}
+              className="catalog__select"
+            >
+              {genres.map(genre => (
+                <option key={genre} value={genre}>{genre}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Cuadricula de peliculas */}
+          {filteredMovies.length === 0 ? (
+            <p className="catalog__empty">No se encontraron peliculas con ese criterio de busqueda.</p>
+          ) : (
+            <div className="catalog__grid">
+              {filteredMovies.map(movie => (
+                <div key={movie.id} className="catalog__card">
+                  <img
+                    src={movie.imagen}
+                    alt={`Poster de ${movie.titulo}`}
+                    className="catalog__card-img"
+                    onError={e => {
+                      e.target.src = 'https://via.placeholder.com/300x450?text=Sin+Imagen'
+                    }}
+                  />
+                  <div className="catalog__card-body">
+                    <span className="catalog__card-genre">{movie.genero}</span>
+                    <h3 className="catalog__card-title">{movie.titulo}</h3>
+                    <p className="catalog__card-director">{movie.director}</p>
+                    <div className="catalog__card-meta">
+                      <span>{movie.anyo}</span>
+                      <span className="catalog__card-score">
+                        <FaStar /> {movie.puntuacion}
+                      </span>
+                    </div>
+                    <p className="catalog__card-desc">{movie.descripcion}</p>
+                    <div className="catalog__card-actions">
+                      <button
+                        className="catalog__btn catalog__btn--edit"
+                        onClick={() => handleEdit(movie)}
+                      >
+                        <FaEdit /> Editar
+                      </button>
+                      <button
+                        className="catalog__btn catalog__btn--delete"
+                        onClick={() => handleDelete(movie.id)}
+                      >
+                        <FaTrash /> Eliminar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Modal para crear o editar una pelicula */}
+        {isFormOpen && (
+          <div className="catalog__overlay" onClick={handleCloseForm}>
+            <div className="catalog__modal" onClick={e => e.stopPropagation()}>
+              <div className="catalog__modal-header">
+                <h2 className="catalog__modal-title">
+                  {editingMovie ? 'Editar Pelicula' : 'Nueva Pelicula'}
+                </h2>
+                <button className="catalog__modal-close" onClick={handleCloseForm}>
+                  <FaTimes />
+                </button>
+              </div>
+
+              <form onSubmit={handleSave} className="catalog__form">
+                <div className="catalog__form-row">
+                  <div className="catalog__form-group">
+                    <label className="catalog__label">Titulo *</label>
+                    <input
+                      type="text"
+                      name="titulo"
+                      value={formData.titulo}
+                      onChange={handleFormChange}
+                      required
+                      className="catalog__input"
+                      placeholder="Titulo de la pelicula"
+                    />
+                  </div>
+                  <div className="catalog__form-group">
+                    <label className="catalog__label">Director *</label>
+                    <input
+                      type="text"
+                      name="director"
+                      value={formData.director}
+                      onChange={handleFormChange}
+                      required
+                      className="catalog__input"
+                      placeholder="Nombre del director"
+                    />
+                  </div>
+                </div>
+
+                <div className="catalog__form-row">
+                  <div className="catalog__form-group">
+                    <label className="catalog__label">Anyo *</label>
+                    <input
+                      type="number"
+                      name="anyo"
+                      value={formData.anyo}
+                      onChange={handleFormChange}
+                      required
+                      min="1900"
+                      max="2030"
+                      className="catalog__input"
+                      placeholder="Ej: 2010"
+                    />
+                  </div>
+                  <div className="catalog__form-group">
+                    <label className="catalog__label">Genero *</label>
+                    <input
+                      type="text"
+                      name="genero"
+                      value={formData.genero}
+                      onChange={handleFormChange}
+                      required
+                      className="catalog__input"
+                      placeholder="Ej: Drama, Accion..."
+                    />
+                  </div>
+                  <div className="catalog__form-group">
+                    <label className="catalog__label">Puntuacion (0-10) *</label>
+                    <input
+                      type="number"
+                      name="puntuacion"
+                      value={formData.puntuacion}
+                      onChange={handleFormChange}
+                      required
+                      min="0"
+                      max="10"
+                      step="0.1"
+                      className="catalog__input"
+                      placeholder="Ej: 8.5"
+                    />
+                  </div>
+                </div>
+
+                <div className="catalog__form-group">
+                  <label className="catalog__label">Descripcion *</label>
+                  <textarea
+                    name="descripcion"
+                    value={formData.descripcion}
+                    onChange={handleFormChange}
+                    required
+                    rows="3"
+                    className="catalog__textarea"
+                    placeholder="Breve descripcion de la trama..."
+                  />
+                </div>
+
+                <div className="catalog__form-group">
+                  <label className="catalog__label">URL del poster</label>
+                  <input
+                    type="url"
+                    name="imagen"
+                    value={formData.imagen}
+                    onChange={handleFormChange}
+                    className="catalog__input"
+                    placeholder="https://..."
+                  />
+                </div>
+
+                <div className="catalog__form-actions">
+                  <button type="submit" className="catalog__btn-save">
+                    {editingMovie ? 'Actualizar' : 'Guardar'}
+                  </button>
+                  <button type="button" className="catalog__btn-cancel" onClick={handleCloseForm}>
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </main>
+
+      <Footer />
+    </>
+  )
+}
+
+export default Catalog
