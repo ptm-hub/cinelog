@@ -37,8 +37,9 @@ CineLog is a movie catalog application that allows users to discover, search, an
 | Page | Route | Description |
 |---|---|---|
 | Home | `/` or `/home` | Landing page with featured movies and a category filter |
-| Catalog | `/catalogo` | Full CRUD operations on the movie database |
+| Catalog | `/catalogo` | Full CRUD operations on the movie database (Firebase) |
 | News | `/noticias` | Live RSS feed from BBC Entertainment and Arts |
+| Import/Export | `/importar-exportar` | Import and export data in JSON, CSV and XML format |
 | Contact | `/contacto` | Contact form and interactive map |
 
 ---
@@ -50,6 +51,9 @@ CineLog is a movie catalog application that allows users to discover, search, an
 - **[Leaflet](https://leafletjs.com/)** - The underlying map library used by React Leaflet
 - **[React Icons](https://react-icons.github.io/react-icons/)** - Icon library (Font Awesome icons used throughout the app)
 - **[rss2json API](https://rss2json.com/)** - Free RSS-to-JSON proxy used to load the BBC RSS feed without CORS issues
+- **[Firebase](https://firebase.google.com/)** - Cloud Firestore database for storing movie data and Firebase Hosting
+- **[PapaParse](https://www.papaparse.com/)** - CSV parsing and generation for import/export functionality
+- **[fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser)** - XML parsing and generation for import/export functionality
 
 ---
 
@@ -69,6 +73,9 @@ The design was inspired by this Figma template:
 - [How to consume RSS feeds in React using the rss2json API](https://rss2json.com/)
 - [CSS Flexbox Guide - CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Leaflet marker icon fix for Vite projects - Stack Overflow](https://stackoverflow.com/questions/49441600/react-leaflet-marker-files-not-found)
+- [Firebase Firestore Get Started - Official Docs](https://firebase.google.com/docs/firestore/quickstart)
+- [PapaParse Documentation](https://www.papaparse.com/docs)
+- [fast-xml-parser Documentation](https://github.com/NaturalIntelligence/fast-xml-parser)
 
 ---
 
@@ -155,6 +162,10 @@ You can use these files to test the import functionality:
 
 ```
 cinelog/
+├── public/
+│   ├── datos.json          # Sample import file in JSON format
+│   ├── datos.csv           # Sample import file in CSV format
+│   └── datos.xml           # Sample import file in XML format
 ├── src/
 │   ├── components/
 │   │   ├── Header/         # Navigation header with hamburger menu
@@ -162,12 +173,16 @@ cinelog/
 │   │   └── MovieCard/      # Reusable movie card component (uses props)
 │   ├── pages/
 │   │   ├── Home/           # Landing page with featured movies
-│   │   ├── Catalog/        # Full CRUD movie catalog
+│   │   ├── Catalog/        # Full CRUD movie catalog connected to Firebase
 │   │   ├── News/           # RSS news feed page
+│   │   ├── ImportExport/   # Import and export data in JSON, CSV and XML
 │   │   └── Contact/        # Contact form with Leaflet map
+│   ├── services/
+│   │   ├── firebase-config.js  # Firebase initialization
+│   │   └── movies-service.js   # Centralized Firestore CRUD functions
 │   ├── data/
-│   │   ├── movies-data.js  # Main movie catalog array (CRUD operations)
-│   │   └── featured-data.js # Featured movies array for the home page
+│   │   ├── movies-data.js      # Static movie array for the home page
+│   │   └── featured-data.js    # Featured movies array for the home page
 │   ├── App.jsx             # Root component with router setup
 │   └── index.css           # Global CSS variables and reset
 ├── firebase.json           # Firebase hosting configuration
