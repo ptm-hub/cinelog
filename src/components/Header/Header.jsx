@@ -1,6 +1,5 @@
 // Componente de cabecera con navegacion responsive
 // En movil aparece un menu hamburguesa que despliega los enlaces
-// Autor: Pablo Tapia Manchado
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaBars, FaTimes, FaFilm } from 'react-icons/fa'

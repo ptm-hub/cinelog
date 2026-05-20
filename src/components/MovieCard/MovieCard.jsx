@@ -1,6 +1,5 @@
 // Componente de tarjeta de pelicula que recibe los datos como props
 // Se usa en la pagina de inicio para mostrar los destacados
-// Autor: Pablo Tapia Manchado
 import { FaStar } from 'react-icons/fa'
 import './MovieCard.css'
 

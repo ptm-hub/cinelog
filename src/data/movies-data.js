@@ -1,5 +1,4 @@
 // Array principal de peliculas para el catalogo con operaciones CRUD
-// Autor: Pablo Tapia Manchado
 
 export const initialMoviesData = [
   {

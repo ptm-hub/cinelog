@@ -1,6 +1,5 @@
 // Array de destacados para la pagina de inicio
 // Este array es diferente al del catalogo, muestra las selecciones editoriales
-// Autor: Pablo Tapia Manchado
 
 export const featuredData = [
   {

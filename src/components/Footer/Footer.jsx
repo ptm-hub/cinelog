@@ -1,5 +1,4 @@
 // Componente de pie de pagina con informacion legal, redes sociales y navegacion
-// Autor: Pablo Tapia Manchado
 import { Link } from 'react-router-dom'
 import {
   FaFacebook,

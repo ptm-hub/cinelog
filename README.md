@@ -19,8 +19,7 @@ CineLog is a movie catalog application that allows users to discover, search, an
 
 **Main page screenshot:**
 
-<!-- Add a screenshot here after deploying to Firebase -->
-<!-- ![CineLog Screenshot](screenshot.png) -->
+![cinelog.mainpage](image.png)
 
 ### Key Features
 
@@ -109,12 +108,12 @@ The design was inspired by this Figma template:
 
 This project is hosted on Firebase Hosting.
 
-**Live URL:** https://cinelog-project.web.app *(update this after deploying)*
+**Live URL:** https://cinelog-80cad.web.app
+**Optional Live URL:** https://cinelog-80cad.firebaseapp.com
 
 **RSS Feed screenshot showing items linking to the app:**
 
-<!-- Add a screenshot of the RSS feed in a reader here -->
-<!-- ![RSS Screenshot](rss-screenshot.png) -->
+![rss-screenshot.png](image-1.png)
 
 ### How to deploy
 
@@ -141,6 +140,14 @@ This project is hosted on Firebase Hosting.
    ```bash
    firebase deploy
    ```
+
+## Sample Import Files
+
+You can use these files to test the import functionality:
+
+- [datos.json](https://raw.githubusercontent.com/ptm-hub/cinelog/main/public/datos.json)
+- [datos.csv](https://raw.githubusercontent.com/ptm-hub/cinelog/main/public/datos.csv)
+- [datos.xml](https://raw.githubusercontent.com/ptm-hub/cinelog/main/public/datos.xml)
 
 ---
 
@@ -188,7 +195,7 @@ cinelog/
 
 **Pablo Tapia Manchado**
 
-- GitHub: [@pablo-tapia-manchado](https://github.com/pablo-tapia-manchado)
+- GitHub: [@ptm-hub](https://github.com/ptm-hub)
 
 ---
 

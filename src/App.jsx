@@ -1,4 +1,3 @@
-// Autor: Pablo Tapia Manchado
 // Componente raiz de la aplicacion con las rutas principales
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
