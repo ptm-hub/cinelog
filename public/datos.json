@@ -1,0 +1,29 @@
+[
+  {
+    "titulo": "Coco",
+    "director": "Lee Unkrich",
+    "anyo": 2017,
+    "genero": "Animacion",
+    "puntuacion": 8.4,
+    "descripcion": "Un joven aspira a convertirse en musico a pesar de la prohibicion familiar. Viaja accidentalmente al mundo de los muertos donde descubre secretos sobre su familia.",
+    "imagen": "https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg"
+  },
+  {
+    "titulo": "Parasite",
+    "director": "Bong Joon-ho",
+    "anyo": 2019,
+    "genero": "Thriller",
+    "puntuacion": 8.5,
+    "descripcion": "Una familia pobre se infiltra en la vida de una familia rica en una serie de eventos que desencadenan consecuencias tragicas e inesperadas.",
+    "imagen": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+  },
+  {
+    "titulo": "El Gran Hotel Budapest",
+    "director": "Wes Anderson",
+    "anyo": 2014,
+    "genero": "Comedia",
+    "puntuacion": 8.1,
+    "descripcion": "Las aventuras del legendario conserje de un famoso hotel europeo de lujo y su joven aprendiz durante la decada de 1930.",
+    "imagen": "https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg"
+  }
+]

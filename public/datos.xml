@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<peliculas>
+  <pelicula>
+    <titulo>Coco</titulo>
+    <director>Lee Unkrich</director>
+    <anyo>2017</anyo>
+    <genero>Animacion</genero>
+    <puntuacion>8.4</puntuacion>
+    <descripcion>Un joven aspira a convertirse en musico a pesar de la prohibicion familiar. Viaja al mundo de los muertos.</descripcion>
+    <imagen>https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg</imagen>
+  </pelicula>
+  <pelicula>
+    <titulo>Parasite</titulo>
+    <director>Bong Joon-ho</director>
+    <anyo>2019</anyo>
+    <genero>Thriller</genero>
+    <puntuacion>8.5</puntuacion>
+    <descripcion>Una familia pobre se infiltra en la vida de una familia rica con consecuencias tragicas e inesperadas.</descripcion>
+    <imagen>https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg</imagen>
+  </pelicula>
+  <pelicula>
+    <titulo>El Gran Hotel Budapest</titulo>
+    <director>Wes Anderson</director>
+    <anyo>2014</anyo>
+    <genero>Comedia</genero>
+    <puntuacion>8.1</puntuacion>
+    <descripcion>Las aventuras del legendario conserje de un hotel europeo de lujo y su joven aprendiz en los anos 30.</descripcion>
+    <imagen>https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg</imagen>
+  </pelicula>
+</peliculas>

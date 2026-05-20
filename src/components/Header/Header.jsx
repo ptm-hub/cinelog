@@ -1,5 +1,6 @@
 // Componente de cabecera con navegacion responsive
 // En movil aparece un menu hamburguesa que despliega los enlaces
+// Autor: Pablo Tapia Manchado
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaBars, FaTimes, FaFilm } from 'react-icons/fa'
@@ -17,7 +18,6 @@ function Header() {
     setIsMenuOpen(false)
   }
 
-  // Funcion para generar la clase del enlace activo
   function getNavClass({ isActive }) {
     return isActive ? 'header__link header__link--active' : 'header__link'
   }
@@ -48,6 +48,9 @@ function Header() {
           </NavLink>
           <NavLink to="/noticias" className={getNavClass} onClick={closeMenu}>
             Noticias
+          </NavLink>
+          <NavLink to="/importar-exportar" className={getNavClass} onClick={closeMenu}>
+            Importar/Exportar
           </NavLink>
           <NavLink to="/contacto" className={getNavClass} onClick={closeMenu}>
             Contacto

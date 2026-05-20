@@ -1,0 +1,221 @@
+/* Estilos de la pagina de importar y exportar datos */
+.import-export {
+  flex: 1;
+  padding: 40px 0 60px;
+}
+
+.import-export__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.import-export__header {
+  margin-bottom: 36px;
+}
+
+.import-export__title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.import-export__subtitle {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Mensaje de estado */
+.import-export__status {
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.import-export__status--ok {
+  background-color: rgba(39, 174, 96, 0.15);
+  border: 1px solid #27ae60;
+  color: #27ae60;
+}
+
+.import-export__status--error {
+  background-color: rgba(233, 69, 96, 0.15);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Spinner de carga */
+.import-export__loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+.import-export__spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Cuadricula de tarjetas de formato */
+.import-export__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.import-export__card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.import-export__card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.import-export__icon {
+  font-size: 1.8rem;
+}
+
+.import-export__icon--json {
+  color: #f5a623;
+}
+
+.import-export__icon--csv {
+  color: #27ae60;
+}
+
+.import-export__icon--xml {
+  color: #3498db;
+}
+
+.import-export__card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.import-export__card-desc {
+  font-size: 0.87rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.import-export__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Botones de accion */
+.import-export__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.import-export__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.import-export__btn--sample {
+  background-color: var(--color-border);
+  color: var(--color-text-soft);
+}
+
+.import-export__btn--sample:hover {
+  opacity: 0.8;
+}
+
+.import-export__btn--export {
+  background-color: rgba(245, 166, 35, 0.15);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+}
+
+.import-export__btn--export:hover:not(:disabled) {
+  background-color: rgba(245, 166, 35, 0.25);
+}
+
+.import-export__btn--import {
+  background-color: rgba(233, 69, 96, 0.15);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+}
+
+.import-export__btn--import:hover {
+  background-color: rgba(233, 69, 96, 0.25);
+  cursor: pointer;
+}
+
+/* Zona de peligro */
+.import-export__danger {
+  background-color: rgba(233, 69, 96, 0.05);
+  border: 1px solid rgba(233, 69, 96, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.import-export__danger-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.import-export__danger-desc {
+  font-size: 0.87rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.import-export__btn--delete {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  padding: 10px 24px;
+}
+
+.import-export__btn--delete:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+}
+
+@media (max-width: 768px) {
+  .import-export__grid {
+    grid-template-columns: 1fr;
+  }
+}
